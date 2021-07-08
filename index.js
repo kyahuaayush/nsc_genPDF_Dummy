@@ -1,16 +1,21 @@
 var html_to_pdf = require('html-pdf-node');
 
 const express = require('express');
+const session = require('express-session');
 const app = express();
-const port = process.env.PORT || 4000;
+const port = process.env.PORT || 1000;
 var fs = require('fs');
 
-fs.writeFileSync('content.log', 'Hey there!');
+
+
+app.use(session({secret: 'NSCSECRET'}));
+
+var sess;
 
 
 app.get('/certificate/:id', async function(req, res) {
-
-  var Id = req.params.id;
+  sess = req.session;
+  var Id = sess.req.params.id;
   var docId = Id.substring(0,13);
   console.log(docId);
 
@@ -48,7 +53,7 @@ app.get('/certificate/:id', async function(req, res) {
             var fileDelPath = docPDFName;
             fs.unlinkSync(fileDelPath);
 
-        }, 10000);
+        }, 15000);
 
 
 
@@ -110,7 +115,7 @@ app.get('/report/:id', async function(req, res) {
             var fileDelPath = docPDFName;
             fs.unlinkSync(fileDelPath);
 
-        }, 10000);
+        }, 15000);
 
 
 
