@@ -2,7 +2,7 @@ var html_to_pdf = require('html-pdf-node');
 
 const express = require('express');
 const app = express();
-const port = process.env.PORT || 1000;
+const port = process.env.PORT || 4000;
 var fs = require('fs');
 
 fs.writeFileSync('content.log', 'Hey there!');
