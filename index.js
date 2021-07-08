@@ -13,6 +13,7 @@ app.use(session({secret: 'NSCSECRET'}));
 var sess;
 
 
+require('events').EventEmitter.prototype._maxListeners = 0;
 app.get('/certificate/:id', async function(req, res) {
   sess = req.session;
   var Id = sess.req.params.id;
@@ -43,7 +44,7 @@ app.get('/certificate/:id', async function(req, res) {
 
       res.download(docPDFName);
       
-    }, 5000);
+    }, 7000);
 
 
         //after 5 sec of download, deleting the file coverted
