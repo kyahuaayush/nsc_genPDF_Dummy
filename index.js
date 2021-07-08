@@ -13,7 +13,7 @@ app.use(session({secret: 'NSCSECRET'}));
 var sess;
 
 
-require('events').EventEmitter.prototype._maxListeners = 0;
+process.setMaxListeners(Infinity);
 app.get('/certificate/:id', async function(req, res) {
   sess = req.session;
   var Id = sess.req.params.id;
