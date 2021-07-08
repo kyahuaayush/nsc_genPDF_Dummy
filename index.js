@@ -5,9 +5,7 @@ const app = express();
 const port = process.env.PORT || 1000;
 var fs = require('fs');
 
-// fs.writeFileSync('content.log', 'Hey there!');
-
-// sendWADoc(917982454237, '123123');
+fs.writeFileSync('content.log', 'Hey there!');
 
 
 app.get('/certificate/:id', async function(req, res) {
@@ -68,7 +66,6 @@ app.get('/certificate/:id', async function(req, res) {
 
 
 app.get('/', function(req, res) {
-  console.log("home page");
     res.send("Home Page");
 })
 
@@ -139,9 +136,4 @@ app.listen();
 app.listen(port, () => {
     console.log(`app is listening on  https://localhost:${port}`);
 })
-
-
-
-//send file function
-
 
